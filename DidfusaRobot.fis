@@ -1,0 +1,73 @@
+[System]
+Name='DidfusaRobot'
+Type='mamdani'
+Version=2.0
+NumInputs=4
+NumOutputs=2
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='sonar0'
+Range=[0 5]
+NumMFs=3
+MF1='PEQUEÑA':'trimf',[-1.91 0.0198412698412698 2.23]
+MF2='MEDIA':'trimf',[1.87 2.59 3.12830687830688]
+MF3='GRANDE':'trimf',[1.65 5 7.02]
+
+[Input2]
+Name='sonar2'
+Range=[0 5]
+NumMFs=3
+MF1='PUQEÑA':'trimf',[-2.07 0.0132 0.985449735449735]
+MF2='MEDIANA':'trimf',[0.999 2.05687830687831 3]
+MF3='GRANDE':'trimf',[0.866402116402116 5.07 7.15]
+
+[Input3]
+Name='sonar3'
+Range=[0 5]
+NumMFs=3
+MF1='PEQUEÑA':'trimf',[-2.07 0.0132 1.01190476190476]
+MF2='MEDIANA':'trimf',[0.999 2.057 3]
+MF3='GRANDE':'trimf',[0.826719576719577 5.07 7.15]
+
+[Input4]
+Name='sonar4'
+Range=[0 5]
+NumMFs=3
+MF1='PEQUEÑA':'trimf',[-1.91 0.172 2.23]
+MF2='MEDIANA':'trimf',[1.87 2.56 3.18]
+MF3='GRANDE':'trimf',[1.653 5 7.08]
+
+[Output1]
+Name='V'
+Range=[0 1]
+NumMFs=3
+MF1='PEQUEÑA':'trimf',[-0.413 0.00529 0.2341]
+MF2='MEDIANA':'trimf',[0.0939 0.503 0.628306878306878]
+MF3='GRANDE':'trimf',[0.562169312169312 1.01 1.43]
+
+[Output2]
+Name='W'
+Range=[-3.14159265358979 3.14159265358979]
+NumMFs=5
+MF1='derecha':'trimf',[-3 -1.52 0]
+MF2='CERO':'trimf',[-0.1 -0 0.1]
+MF3='izquierda':'trimf',[0 1.52 3]
+MF4='MUYDERECHA':'trimf',[-3.54 -3.16 -1.531]
+MF5='MUYIZQUIERDA':'trimf',[1.571 3.13 3.5]
+
+[Rules]
+1 0 3 0, 0 1 (1) : 1
+0 3 0 1, 0 3 (1) : 1
+0 1 -1 0, 0 4 (1) : 1
+0 -1 1 0, 0 5 (1) : 1
+3 3 3 3, 3 2 (1) : 1
+0 3 3 0, 3 0 (1) : 1
+0 3 -3 0, 3 0 (1) : 1
+0 -3 3 0, 3 0 (1) : 1
+0 1 1 0, 1 0 (1) : 1
